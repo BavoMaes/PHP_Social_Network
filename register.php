@@ -1,5 +1,17 @@
 <!doctype html>
 
+<?php
+    
+    $uitgelezenFirstName = $uitgelezenLastName = $uitgelezenUserName = $uitgelezenPassword = $uitgelezenPassword2 = $uitgelezenGender = "";
+    
+    $uitgelezenFirstName = $_POST["firstname"];
+    $uitgelezenLastName = $_POST["lastname"];
+    $uitgelezenUserName = $_POST["username"];
+    $uitgelezenPassword = $_POST["password"];
+    $uitgelezenPassword2 = $_POST["password2"];
+    $uitgelezenGender = $_POST["gender"];
+?>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -14,7 +26,7 @@
 <body>
     <h2>Register</h2>
     <b>* = required field</b>
-    <form action="verwerkingspagina.php">
+    <form action="register.php" method="POST">
   First name* :<br>
   <input type="text" name="firstname"><br>
   Last name* :<br>
@@ -41,3 +53,11 @@
   <!-- <script src="js/scripts.js"></script> -->
 </body>
 </html>
+
+<?php
+
+
+
+?>
+
+    
