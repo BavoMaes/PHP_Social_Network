@@ -12,16 +12,18 @@
 </head>
 
 <body>
-    <form>
-  First name:<br>
+    <h2>Register</h2>
+    <b>* = required field</b>
+    <form action="verwerkingspagina.php">
+  First name* :<br>
   <input type="text" name="firstname"><br>
-  Last name:<br>
+  Last name* :<br>
   <input type="text" name="lastname"><br>
-        Username:<br>
+        Username* :<br>
   <input type="text" name="username"><br>
-        Password:<br>
+        Password* :<br>
   <input type="password" name="password"><br>
-        Password again:<br>
+        Password again* :<br>
   <input type="password" name="password2"><br>
         Date of Birth:<br>
         Day (1-31):
@@ -30,7 +32,7 @@
   <input type="text" name="month"><br>
         Year:
   <input type="text" name="year"><br>
-        Gender:<br>
+        Gender* :<br>
           <input type="radio" name="gender" value="male" checked> Male<br>
   <input type="radio" name="gender" value="female"> Female<br>
   <input type="radio" name="gender" value="other"> Other<br>
