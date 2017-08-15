@@ -107,6 +107,9 @@
           <input type="radio" name="gender" value="male" checked> Male<br>
   <input type="radio" name="gender" value="female"> Female<br>
   <input type="radio" name="gender" value="other"> Other<br>
+  <label for="bestand">Profile picture:
+                <input type="file" name="bestand"/>
+  </label><br>
   <input type="hidden" name="postcheck" value="true"/>
         <input type="submit" value="Submit">
 </form>
