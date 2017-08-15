@@ -26,27 +26,21 @@ function isVeldNumeriek($naamVeld) {
     return is_numeric(getVeldWaarde($naamVeld));
 }
 
-function isRijksregisternummerValid($naamVeld){
-    //Bijvoorbeeld: 93051822361
-   $rijksregisternummer = getVeldWaarde($naamVeld);
-   $eersteDeel = substr($rijksregisternummer, 0,9);
-   $restEersteDeel = $eersteDeel % 97;
-   $berekendControleGetal = 97 - $restEersteDeel;
-   $gelezenControleGetal = substr($rijksregisternummer, 9, 2);
-   return ($berekendControleGetal == $gelezenControleGetal);
+function isFirstNameValid($naamVeld){
+    $uitgelezenFirstName = getVeldWaarde("firstname");
 }
 
-function isBankrekeningnummerValid($naamVeld){
-    //Bijvoorbeeld: 57000340641970 
-   $bankrekeningnummer = getVeldWaarde($naamVeld);
-   $eersteDeel = substr($bankrekeningnummer, 2,10);
-   $berekendControleGetal = $eersteDeel % 97;
-   //Indien je problemen hebt met het valideren van je rekeningnummer => PHP_INT_MAX staat te laag ingesteld op jouw server
-   //Volgende manier om de modulo te berekenen omzeilt dan het probleem:
-   //$berekendControleGetal = fmod($eersteDeel, 97);
-   $gelezenControleGetal = substr($bankrekeningnummer, 12, 2);
-   return ($berekendControleGetal == $gelezenControleGetal && strlen($bankrekeningnummer) == 14);
+function zijnWachtwoordenGelijk($naamveld1, $naamveld2){
+    $wachtwoord1 = getVeldWaarde($naamveld1);
+    $wachtwoord2 = getVeldWaarde($naamveld2);
+    if($wachtwoord1 === $wachtwoord2){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
+
 
 //Error message generatie
 function errRequiredVeld($naamVeld) {
@@ -80,20 +74,14 @@ function errVeldMoetKleinerDanOfGelijkAanWaarde($naamVeld, $waarde) {
     }
 }
 
-function errVeldIsRijksregisternummer($naamVeld) {
-    if (isRijksregisternummerValid($naamVeld)) {
-        return "";
-    } else {
-        return "Geef een geldig rijksregisternummer in.";
-    }
-}
 
-function errVeldIsBankrekeningnummer($naamVeld) {
-    if (isBankrekeningnummerValid($naamVeld)) {
-        return "";
-    } else {
-        return "Geef een geldig bankrekeningnummer in.";
+function errWachtwoordenNietGelijk($naamVeld1, $naamVeld2){
+    if(!zijnWachtwoordenGelijk($naamVeld1, $naamVeld2)){
+        return "De wachtwoorden zijn niet gelijk";
     }
+      else{
+        return "";  
+      }
 }
 
 function errVeldIsNumeriek($naamVeld) {
