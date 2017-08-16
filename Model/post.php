@@ -41,7 +41,7 @@ class Post {
 
     public function __construct($postId, $postContent, $postTime, $userId) {
         $this->postId = $postId;
-        $this->postConent = $postContent;
+        $this->postContent = $postContent;
         $this->postTime = $postTime;
         $this->userId = $userId;
     }
