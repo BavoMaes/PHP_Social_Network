@@ -39,32 +39,6 @@ img{
     margin: 0;
 }
 
-#search_container{
-    width: 40%;
-    padding: 0.5em 0;
-    float: left;
-}
-
-#search_container input[type=text] {
-    width: 96%;
-    height: 2.75em;
-    border-radius: 2px;
-    border: 1px solid #000000;
-}
-
-#search_container input[placeholder]{
-    font-size: 0.7em;
-    padding: 0 2%;
-}
-
-#search_button{
-    height: 1.99em;
-    margin: 0.54em 0;
-    width: 2em;
-    background-color: #eeeeee;
-    float: left;
-}
-
 #profile_button{
     float: right;
     border: 1px solid #444444;
@@ -92,7 +66,24 @@ h5{
     color: white;
     margin: 0;
     float: left;
-    padding: 0.2em 0.75em 0.2em 0.1em;
+    padding: 0.5em 0.75em 0.2em 0.1em;
+}
+
+h7{
+    font-weight: 100;
+    font-size: 0.7em;
+    text-decoration: underline;
+    color: white;
+    margin: 0;
+    padding: 0;  
+}
+
+h8{
+    color: red;
+    font-weight: 100;
+    font-size: 0.7em;
+    margin: 0;
+    padding: 0;  
 }
 
 #profile_pic{
@@ -121,6 +112,16 @@ h1{
     margin: 0 0;
 }
 
+h2{
+    margin: 0.5em 0;
+    color: white;
+    font-weight: 300;
+}
+
+#post{
+    width: 100%;
+}
+
 #post textarea {
     width: 96%;
     border-radius: 2px;
@@ -134,10 +135,55 @@ h1{
 }
 
 #post input[type=submit]{
-   float: right;
+    float: right;
     border: 1px solid #333333;
     background-color: #222222;
     color: white;
     padding: 0.5em 1em;
     border-radius: 2px;
+    margin: 5em 0;
+}
+
+.background{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#login_background{
+    background-image: url(login.jpg);
+}
+
+#white_banner{
+    background-color: rgba(20, 20, 20, 0.75);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+form{
+    width: 100%;
+    color: white;
+}
+
+label{
+    font-weight: 300;
+    font-size: 0.7em
+}
+
+#login_form input[type=text]{
+    width: 50%;
+}
+
+#login_form input[type=password]{
+    width: 50%;
+}
+
+#login_form input[type=submit]{
+    margin: 1em 0 1em 0;
 }

@@ -6,6 +6,7 @@
     $errFirstName = $errLastName = $errUserName = $errPassword = $errPassword2 = $errDag = $errMaand = $errJaar = "";
     
     include_once './validatiebibliotheek.php';
+    include_once 'DAO/userDAO.php';
     
     if(isFormulierIngediend()){
         $errFirstName = errRequiredVeld("firstname");
@@ -23,6 +24,7 @@
     if(isFormulierValid()){
         //Verwijs hier naar de home pagina
         echo "Het werkt.";
+        slaWaardenOp();
     }
     else {
       $uitgelezenFirstName = getVeldWaarde("firstname");
@@ -51,7 +53,15 @@
         return false;
     }
 }
-    
+
+    function slaWaardenOp(){
+        $newUser = new User(0, getVeldWaarde("firstname"), getVeldWaarde("lastname"), getVeldWaarde("username"), getVeldWaarde("password"), getVeldWaarde("day"), getVeldWaarde("month"), getVeldWaarde("year"), getVeldWaarde("gender"));
+        UserDAO::insert($newUser);
+
+        header("location:index.php");
+
+    }
+
     
 ?>
 
