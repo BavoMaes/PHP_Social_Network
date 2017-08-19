@@ -57,9 +57,13 @@
           <input type="radio" name="gender" value="male" checked><h9>Male</h9>
   <input type="radio" name="gender" value="female"><h9>Female</h9>
   <input type="radio" name="gender" value="other"><h9>Other</h9><br>
+        <div class="nameblock">
   <label>Profile picture:</label>
-                <input type="file" name="profilepic"/>
-<br>
+                <input type="file" name="profilepic"/></div>
+        <div class="nameblock">
+            <label>Bio :</label><br>
+        <input type="text" name="bio" maxlength="100"></div>
+
   <input type="hidden" name="postcheck" value="true"/>
         <input type="submit" value="Submit">
 </form>

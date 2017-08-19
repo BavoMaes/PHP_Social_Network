@@ -53,11 +53,11 @@ public static function getAll() {
     }
     
     protected static function converteerRijNaarObject($databaseRij) {
-        return new User($databaseRij['UserID'], $databaseRij['FirstName'], $databaseRij['LastName'], $databaseRij['UserName'], $databaseRij['Password'], $databaseRij['Day'], $databaseRij['Month'], $databaseRij['Year'], $databaseRij['Gender']);
+        return new User($databaseRij['UserID'], $databaseRij['FirstName'], $databaseRij['LastName'], $databaseRij['UserName'], $databaseRij['Password'], $databaseRij['Day'], $databaseRij['Month'], $databaseRij['Year'], $databaseRij['Gender'], $databaseRij['Bio']);
     }
     
     public static function insert($post) {
-        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Users(UserID, FirstName, LastName, UserName, Password, Day, Month, Year, Gender) VALUES ('?','?','?','?','?','?','?','?','?')", array($post->getUserId(), $post->getFirstName(), $post->getLastName(), $post->getUserName(), $post->getPassword(), $post->getDay(), $post->getMonth(), $post->getYear(), $post->getGender()));
+        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Users(UserID, FirstName, LastName, UserName, Password, Day, Month, Year, Gender, Bio) VALUES ('?','?','?','?','?','?','?','?','?','?')", array($post->getUserId(), $post->getFirstName(), $post->getLastName(), $post->getUserName(), $post->getPassword(), $post->getDay(), $post->getMonth(), $post->getYear(), $post->getGender(), $post->getBio()));
     }
     
     }

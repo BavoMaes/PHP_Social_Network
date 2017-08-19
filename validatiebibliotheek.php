@@ -41,12 +41,46 @@ function zijnWachtwoordenGelijk($naamveld1, $naamveld2){
     }
 }
 
+function bestaatGebruiker($naamVeld){
+    include_once 'DAO/userDAO.php';
+    if(UserDAO::getByUserName(getVeldWaarde($naamVeld))){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function pictureType($picture){
+    if(isset($_FILES[$picture])){ 
+    $photo = $_FILES[$picture];
+    $file_ext = strtolower(end(explode('.',$photo['name'])));
+    return ($file_ext == 'jpg');
+    }else{
+        return false;
+    }
+}
 
 //Error message generatie
 function errRequiredVeld($naamVeld) {
     if (isVeldLeeg($naamVeld)) {
         return "Gelieve een waarde in te geven";
     } else {
+        return "";
+    }
+}
+
+function errFileType($picture){
+    if(pictureType($picture)){
+        return "";
+    }else{
+        return "Please upload a .jpg image.";
+    }
+}
+
+function errUserExists($naamveld){
+    if(bestaatGebruiker($naamveld)) {
+        return "Username is already in use.";
+    } else{
         return "";
     }
 }

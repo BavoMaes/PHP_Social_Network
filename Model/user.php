@@ -11,6 +11,7 @@ class User {
     private $month;
     private $year;
     private $gender;
+    private $bio;
 
     public function getUserId() {
         return $this->userId;
@@ -46,6 +47,10 @@ class User {
     
     public function getGender() {
         return $this->gender;
+    }
+    
+    public function getBio() {
+        return $this->bio;
     }
 
     public function setUserId($userId) {
@@ -83,8 +88,12 @@ class User {
     public function setGender($gender) {
         $this->gender = $gender;
     }
+    
+    public function setBio($bio) {
+        $this->bio = $bio;
+    }
 
-    public function __construct($userId, $firstname, $lastname, $username, $password, $day, $month, $year, $gender) {
+    public function __construct($userId, $firstname, $lastname, $username, $password, $day, $month, $year, $gender, $bio) {
         $this->userId = $userId;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -94,6 +103,7 @@ class User {
         $this->month = $month;
         $this->year = $year;
         $this->gender = $gender;
+        $this->bio = $bio;
     }
 
     //Extra functionaliteit kan je hier schrijven

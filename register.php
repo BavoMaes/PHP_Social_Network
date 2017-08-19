@@ -3,7 +3,8 @@
 <?php
     
     $uitgelezenFirstName = $uitgelezenLastName = $uitgelezenUserName = $uitgelezenPassword = $uitgelezenPassword2 = $uitgelezenDag = $uitgelezenMaand = $uitgelezenJaar = "";
-    $errFirstName = $errLastName = $errUserName = $errPassword = $errPassword2 = $errDag = $errMaand = $errJaar = "";
+    $uitgelezenPicture;
+    $errFirstName = $errLastName = $errUserName = $errPassword = $errPassword2 = $errDag = $errMaand = $errJaar = $errPicture = "";
     
     include_once './validatiebibliotheek.php';
     include_once 'DAO/userDAO.php';
@@ -12,6 +13,7 @@
         $errFirstName = errRequiredVeld("firstname");
         $errLastName = errRequiredVeld("lastname");
         $errUserName = errRequiredVeld("username");
+        $errUserName = errVoegMeldingToe(errRequiredVeld("username"), errUserExists("username"));
         $errPassword = errRequiredVeld("password");
         $errPassword2 = errWachtwoordenNietGelijk("password", "password2");
         $errDag = errVoegMeldingToe(errVeldIsNumeriek("day"), errVeldMoetGroterDanWaarde("day", 0));
@@ -20,6 +22,7 @@
         $errMaand = errVoegMeldingToe($errMaand, errVeldMoetKleinerDanOfGelijkAanWaarde("month", 12));
         $errJaar = errVoegMeldingToe(errVeldIsNumeriek("year"), errVeldMoetKleinerDanOfGelijkAanWaarde("year", date("Y")));
         $errJaar = errVoegMeldingToe($errJaar, errVeldMoetGroterDanWaarde("year", 1850));
+        $errPicture = errFileType("profilepic");
         
     if(isFormulierValid()){
         slaWaardenOp();
@@ -34,7 +37,9 @@
     $uitgelezenDag = getVeldWaarde("day");
     $uitgelezenMaand = getVeldWaarde("month");
     $uitgelezenJaar = getVeldWaarde("year");
-    $uitgelezenGender = getVeldWaarde("gender"); 
+    $uitgelezenGender = getVeldWaarde("gender");
+    $uitgelezenBio = getVeldWaarde("bio");
+    $uitgelezenPicture = $_FILES['profilepic'];
     }
 }
 
@@ -43,8 +48,8 @@
 }
 
     function isFormulierValid() {
-    global $errFirstName, $errLastName, $errUserName, $errPassword, $errPassword2, $errGender;
-    $allErr = $errFirstName . $errLastName . $errUserName . $errPassword . $errPassword2 . $errGender;
+    global $errFirstName, $errLastName, $errUserName, $errPassword, $errPassword2, $errGender, $errPicture;
+    $allErr = $errFirstName . $errLastName . $errUserName . $errPassword . $errPassword2 . $errGender . $errPicture;
     if (empty($allErr)) {
         //Formulier is valid
         return true;
@@ -54,7 +59,7 @@
 }
 
     function slaWaardenOp(){
-        $newUser = new User(0, getVeldWaarde("firstname"), getVeldWaarde("lastname"), getVeldWaarde("username"), getVeldWaarde("password"), getVeldWaarde("day"), getVeldWaarde("month"), getVeldWaarde("year"), getVeldWaarde("gender"));
+        $newUser = new User(0, getVeldWaarde("firstname"), getVeldWaarde("lastname"), getVeldWaarde("username"), getVeldWaarde("password"), getVeldWaarde("day"), getVeldWaarde("month"), getVeldWaarde("year"), getVeldWaarde("gender"), getVeldWaarde("bio"));
         UserDAO::insert($newUser);
         $user = UserDAO::getByHighestId();
         $profilePicName = $user->getUserName();
@@ -69,8 +74,8 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Register</title>
-
+  <title>Register - Shareclub</title>
+  <link rel="icon" href="img/favincon.png" type="image/gif" sizes="128x128">
 <link rel="stylesheet" href="style.css"> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
@@ -122,9 +127,12 @@
           <input type="radio" name="gender" value="male" checked><h9>Male</h9>
   <input type="radio" name="gender" value="female"><h9>Female</h9>
   <input type="radio" name="gender" value="other"><h9>Other</h9><br>
+  <div class="nameblock"><br>
   <label>Profile picture* :</label>
-                <input type="file" name="profilepic"/>
-<br>
+                <input type="file" name="profilepic"/></div>
+        <div class="nameblock">
+            <label>Bio :</label><br>
+            <input type="text" name="bio" maxlength="100" value="<?php echo $uitgelezenBio ?>"></div>
   <input type="hidden" name="postcheck" value="true"/>
         <input type="submit" value="Submit">
 </form>

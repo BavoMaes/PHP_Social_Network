@@ -22,7 +22,8 @@ if (isset($_COOKIE['GebruikersId'])){
 <head>
   <meta charset="utf-8">
 
-  <title>Home</title>
+  <title>Shareclub</title>
+  <link rel="icon" href="img/favincon.png" type="image/gif" sizes="128x128">
   <link rel="stylesheet" href="style.css"> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
@@ -31,7 +32,7 @@ if (isset($_COOKIE['GebruikersId'])){
       <nav>
     <div class="container">
     <div id="logo_container">
- <img id="nav_logo" alt="Social Network Logo" src="img/s_logo.png"></div>
+        <a href="index.php"><img id="nav_logo" alt="Social Network Logo" src="img/s_logo.png"></a></div>
         
 <a href="logout.php"><div class="profile_button">
         <h6>Log Out</h6></div></a> 
@@ -45,7 +46,7 @@ if (isset($_COOKIE['GebruikersId'])){
     <div id="nav_clear"></div>
     <div class="container">
     <div id="page_container">
-    <form id="post" action="doPost.php" method="POST">
+    <form id="post" action="doPost.php" method="POST" enctype="multipart/form-data">
         <textarea name="postcontent" placeholder="How was your day, <?php echo $firstname ?>?" rows="3" maxlength="200"></textarea>
         <input type="file" name="postpic"/>
         <input type="submit" value="Submit">
@@ -77,7 +78,12 @@ if (isset($_COOKIE['GebruikersId'])){
         echo $post->getPostContent();
         ?>
         </p>
-        <!--<img src="img/login.jpg">-->
+        <?php
+        if(file_exists('img/postPics/' . $post->getPostId() . '.jpg')){
+            echo '<img src="img/postPics/' . $post->getPostId() . '.jpg">';
+                    }
+        
+        ?>
         </div>
             <div style="clear:both"></div>
         </div>

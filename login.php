@@ -44,8 +44,8 @@ function isFormulierIngediend() {
 <head>
   <meta charset="utf-8">
 
-  <title>Login</title>
-
+  <title>Login - Shareclub</title>
+  <link rel="icon" href="img/favincon.png" type="image/gif" sizes="128x128">
 <link rel="stylesheet" href="style.css"> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 

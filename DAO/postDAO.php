@@ -19,6 +19,17 @@ public static function getAll() {
         return $resultatenArray;
     }
     
+        public static function getByHighestId() {
+        $resultaat = self::getVerbinding()->voerSqlQueryUit("SELECT * FROM Posts ORDER BY PostID DESC LIMIT 1");
+        if ($resultaat->num_rows == 1) {
+            $databaseRij = $resultaat->fetch_array();
+            return self::converteerRijNaarObject($databaseRij);
+        } else {
+            //Er is waarschijnlijk iets mis gegaan
+            return false;
+        }
+    }
+    
     protected static function converteerRijNaarObject($databaseRij) {
         return new Post($databaseRij['PostID'], $databaseRij['PostContent'], $databaseRij['PostTime'], $databaseRij['UserID']);
     }
