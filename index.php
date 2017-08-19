@@ -47,20 +47,43 @@ if (isset($_COOKIE['GebruikersId'])){
     <div id="page_container">
     <form id="post" action="doPost.php" method="POST">
         <textarea name="postcontent" placeholder="How was your day, <?php echo $firstname ?>?" rows="3" maxlength="200"></textarea>
+        <input type="file" name="postpic"/>
         <input type="submit" value="Submit">
         <div style="clear: both;"></div>
     </form>
         <?php
-    foreach (PostDAO::getAll() as $post) {
-            $postUserId = $post->getUserId();
-            $postUser = UserDAO::getById($postUserId);
-            echo $postUser->getUserName() . "<br>";
-            echo $post->getPostTime() . "<br>";
-            echo $post->getPostContent() . "<br><br>";
-            
-        }
+    foreach (PostDAO::getAll() as $post) { 
         
-    
+        $postUserId = $post->getUserId();
+            $postUser = UserDAO::getById($postUserId);
+?>
+        <div class="post">
+        <div class="postinfo">
+            <img class="post_profile_pic" src="img/profilePics/<?php
+        echo $postUser->getUserName();
+        ?>.jpg">
+            <h3><?php
+            echo $post->getPostTime();
+            ?>
+            </h3></div> 
+        <div class="text">        
+                    <h4><a href="">
+            <?php
+            echo $postUser->getUserName();
+            ?>
+                </a></h4>
+        <p>
+        <?php
+        echo $post->getPostContent();
+        ?>
+        </p>
+        <!--<img src="img/login.jpg">-->
+        </div>
+            <div style="clear:both"></div>
+        </div>
+            
+        <?php   
+        }
         ?>
     </div>
     </div>
