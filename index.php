@@ -38,7 +38,7 @@ if (isset($_COOKIE['GebruikersId'])){
         <a href="profile.php"><div class="profile_button">
             <h6>Welcome</h6>
              <h5><?php echo $firstname ?></h5>
-            <div id="profile_pic"></div>
+            <img id="profile_pic" src="img/profilePics/<?php echo $username; ?>.jpg">
         </div></a> 
         </div>
   </nav>

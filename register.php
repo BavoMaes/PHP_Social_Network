@@ -57,7 +57,7 @@
         $newUser = new User(0, getVeldWaarde("firstname"), getVeldWaarde("lastname"), getVeldWaarde("username"), getVeldWaarde("password"), getVeldWaarde("day"), getVeldWaarde("month"), getVeldWaarde("year"), getVeldWaarde("gender"));
         UserDAO::insert($newUser);
         $user = UserDAO::getByHighestId();
-        $profilePicName = $user->getUserId();
+        $profilePicName = $user->getUserName();
         $profilePic = $_FILES["profilepic"];
         move_uploaded_file($profilePic["tmp_name"], "img/profilePics/" . $profilePicName . ".jpg");
         setcookie('GebruikersId', $user->getUserId(), time() + 60 * 60 * 24);
@@ -79,7 +79,7 @@
 <body>
     <h2>Register</h2>
     <b>* = required field</b>
-    <form action="register.php" method="POST">
+    <form action="register.php" method="POST" enctype="multipart/form-data">
   First name* :<br>
   <input type="text" name="firstname" value="<?php echo $uitgelezenFirstName; ?>"><br>
   <mark><?php echo $errFirstName; ?></mark>
