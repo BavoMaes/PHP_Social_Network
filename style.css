@@ -51,13 +51,20 @@ img{
     background-color: #444444;
 }
 
+h9{
+    font-weight: 100;
+    font-size: 0.7em;
+    margin: 0 2em 0 0;
+    padding: 0; 
+}
+
 h6{
     font-weight: 100;
     font-size: 0.9em;
     color: white;
     margin: 0;
     float: left;
-    padding: 0.2em 0.2em;    
+    padding: 0.2em 0.2em;
 }
 
 h5{
@@ -90,8 +97,6 @@ h8{
     width: 1.5em;
     height: 1.5em;
     background-color: #eeeeee;
-    background-position: center;
-    background-size: cover;
     float: left;
     border-radius: 50%;
 }
@@ -103,7 +108,6 @@ h8{
 
 #page_container{
     padding: 2em;
-    min-height: 100vh;
     background-color: white;
 }
 
@@ -156,6 +160,10 @@ h2{
     background-image: url(img/login.jpg);
 }
 
+#register_background{
+    background-image: url(img/register.jpg);
+}
+
 #white_banner{
     background-color: rgba(20, 20, 20, 0.75);
     position: absolute;
@@ -184,4 +192,40 @@ label{
 
 #login_form input[type=submit]{
     margin: 1em 0 1em 0;
+}
+
+#register_form{
+    margin-bottom: 1em;
+}
+
+.nameblock{
+    width: 50%;
+    float: left;
+    margin: 0.75em 0;
+}
+
+.nameblock input[type=text]{
+    width: 80%;
+}
+
+.thirdblock{
+    width: 33.3%;
+    float: left;
+    margin: 0.75em 0;
+}
+
+.thirdblock input[type=text]{
+    width: 80%;
+}
+
+.thirdblock input[type=password]{
+    width: 80%;
+}
+
+#register_form input[type=radio]{
+    margin: 0 1em 1.5em 0;
+}
+
+#register_form input[type=submit]{
+    margin: 2em 0 0 0;
 }

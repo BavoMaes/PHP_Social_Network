@@ -12,21 +12,58 @@
 </head>
 
 <body>
-    <div class="background" id="login_background">
+    <div class="background" id="register_background">
     <div id="white_banner">
     <div class="container">
-    <h2>Login</h2>
-    <form id="login_form" action="login.php" method="POST">
-  <label>Username:</label><br>
-  <input type="text" name="username"><br>
-        <h8>This user doesn't exist.</h8><br>
-  <label>Password:</label><br>
-  <input type="password" name="password"><br>
-        <h8>This user doesn't exist.</h8><br>
+    <h2>Register</h2>
+    
+    <form id="register_form" action="register.php" method="POST" enctype="multipart/form-data">
+        <div class="nameblock">
+  <label>First name* :</label><br>
+  <input type="text" name="firstname" value="<?php echo $uitgelezenFirstName; ?>"><br>
+  <h8><?php echo $errFirstName; ?></h8>
+                </div><div class="nameblock">
+  <label>Last name* :</label><br>
+  <input type="text" name="lastname" value="<?php echo $uitgelezenLastName; ?>"><br>
+  <h8><?php echo $errLastName; ?></h8>
+                </div><div class="thirdblock">
+        <label>Username* :</label><br>
+  <input type="text" name="username" value="<?php echo $uitgelezenUserName; ?>"><br>
+  <h8><?php echo $errUserName; ?></h8>
+               </div><div class="thirdblock">
+        <label>Password* :</label><br>
+  <input type="password" name="password" value="<?php echo $uitgelezenPassword; ?>"><br>
+  <h8><?php echo $errPassword; ?></h8>
+                </div><div class="thirdblock">
+        <label>Password again* :</label><br>
+  <input type="password" name="password2" value="<?php echo $uitgelezenPassword2; ?>"><br>
+  <h8><?php echo $errPassword2; ?></h8>
+                </div><br>
+        <label style="font-size: 0.8em">Date of Birth* :</label><br>
+        <div class="thirdblock">
+        <label>Day* (1-31) :</label><br>
+  <input type="text" name="day" value="<?php echo $uitgelezenDag; ?>"><br>
+  <h8><?php echo $errDag; ?></h8>
+                </div><div class="thirdblock">
+        <label>Month* (1-12) :</label><br>
+  <input type="text" name="month" value="<?php echo $uitgelezenMaand; ?>"><br>
+  <h8><?php echo $errMaand; ?></h8>
+                </div><div class="thirdblock">
+        <label>Year* :</label><br>
+  <input type="text" name="year"  value="<?php echo $uitgelezenJaar; ?>"><br>
+   <h8><?php echo $errJaar; ?></h8><br>
+                </div><br>
+        <label>Gender* :</label><br>
+          <input type="radio" name="gender" value="male" checked><h9>Male</h9>
+  <input type="radio" name="gender" value="female"><h9>Female</h9>
+  <input type="radio" name="gender" value="other"><h9>Other</h9><br>
+  <label>Profile picture:</label>
+                <input type="file" name="profilepic"/>
+<br>
   <input type="hidden" name="postcheck" value="true"/>
-        <input type="submit" value="Login">
+        <input type="submit" value="Submit">
 </form>
-    <a href="register.php"><h7>Create an account</h7></a>
+        <a href="login.php"><h7>I already have an account.</h7></a>
         </div>
         </div>
         </div>

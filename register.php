@@ -77,52 +77,61 @@
 </head>
 
 <body>
+    <div class="background" id="register_background">
+    <div id="white_banner">
+    <div class="container">
     <h2>Register</h2>
-    <b>* = required field</b>
-    <form action="register.php" method="POST" enctype="multipart/form-data">
-  First name* :<br>
+    
+    <form id="register_form" action="register.php" method="POST" enctype="multipart/form-data">
+        <div class="nameblock">
+  <label>First name* :</label><br>
   <input type="text" name="firstname" value="<?php echo $uitgelezenFirstName; ?>"><br>
-  <mark><?php echo $errFirstName; ?></mark>
-                <br>
-  Last name* :<br>
+  <h8><?php echo $errFirstName; ?></h8>
+                </div><div class="nameblock">
+  <label>Last name* :</label><br>
   <input type="text" name="lastname" value="<?php echo $uitgelezenLastName; ?>"><br>
-  <mark><?php echo $errLastName; ?></mark>
-                <br>
-        Username* :<br>
+  <h8><?php echo $errLastName; ?></h8>
+                </div><div class="thirdblock">
+        <label>Username* :</label><br>
   <input type="text" name="username" value="<?php echo $uitgelezenUserName; ?>"><br>
-  <mark><?php echo $errUserName; ?></mark>
-                <br>
-        Password* :<br>
+  <h8><?php echo $errUserName; ?></h8>
+               </div><div class="thirdblock">
+        <label>Password* :</label><br>
   <input type="password" name="password" value="<?php echo $uitgelezenPassword; ?>"><br>
-  <mark><?php echo $errPassword; ?></mark>
-                <br>
-        Password again* :<br>
+  <h8><?php echo $errPassword; ?></h8>
+                </div><div class="thirdblock">
+        <label>Password again* :</label><br>
   <input type="password" name="password2" value="<?php echo $uitgelezenPassword2; ?>"><br>
-  <mark><?php echo $errPassword2; ?></mark>
-                <br>
-        Date of Birth:<br>
-        Day (1-31):
+  <h8><?php echo $errPassword2; ?></h8>
+                </div><br>
+        <label style="font-size: 0.8em;padding-top:5em">Date of Birth* :</label><br>
+        <div class="thirdblock">
+        <label>Day* (1-31) :</label><br>
   <input type="text" name="day" value="<?php echo $uitgelezenDag; ?>"><br>
-  <mark><?php echo $errDag; ?></mark>
-                <br>
-        Month (1-12):
+  <h8><?php echo $errDag; ?></h8>
+                </div><div class="thirdblock">
+        <label>Month* (1-12) :</label><br>
   <input type="text" name="month" value="<?php echo $uitgelezenMaand; ?>"><br>
-  <mark><?php echo $errMaand; ?></mark>
-                <br>
-        Year:
+  <h8><?php echo $errMaand; ?></h8>
+                </div><div class="thirdblock">
+        <label>Year* (1850 - now) :</label><br>
   <input type="text" name="year"  value="<?php echo $uitgelezenJaar; ?>"><br>
-   <mark><?php echo $errJaar; ?></mark>
-                <br>
-        Gender* :<br>
-          <input type="radio" name="gender" value="male" checked> Male<br>
-  <input type="radio" name="gender" value="female"> Female<br>
-  <input type="radio" name="gender" value="other"> Other<br>
-  <label for="bestand">Profile picture:
+   <h8><?php echo $errJaar; ?></h8><br>
+                </div><br>
+        <label>Gender* :</label><br>
+          <input type="radio" name="gender" value="male" checked><h9>Male</h9>
+  <input type="radio" name="gender" value="female"><h9>Female</h9>
+  <input type="radio" name="gender" value="other"><h9>Other</h9><br>
+  <label>Profile picture* :</label>
                 <input type="file" name="profilepic"/>
-  </label><br>
+<br>
   <input type="hidden" name="postcheck" value="true"/>
         <input type="submit" value="Submit">
 </form>
+    <a href="login.php"><h7>I already have an account.</h7></a>
+        </div>
+        </div>
+        </div>
   <!-- <script src="js/scripts.js"></script> -->
 </body>
 </html>

@@ -48,9 +48,13 @@ if (isset($_COOKIE['GebruikersId'])){
     <form id="post" action="doPost.php" method="POST">
         <textarea name="postcontent" placeholder="How was your day, <?php echo $firstname ?>?" rows="3" maxlength="200"></textarea>
         <input type="submit" value="Submit">
+        <div style="clear: both;"></div>
     </form>
         <?php
     foreach (PostDAO::getAll() as $post) {
+            $postUserId = $post->getUserId();
+            $postUser = UserDAO::getById($postUserId);
+            echo $postUser->getUserName() . "<br>";
             echo $post->getPostTime() . "<br>";
             echo $post->getPostContent() . "<br><br>";
             
