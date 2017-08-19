@@ -1,13 +1,21 @@
 <?php
 
+
+include_once './validatiebibliotheek.php';
+include_once 'DAO/userDAO.php';
+
+if (isset($_COOKIE["GebruikersId"])){
+    
+    if (UserDAO::getById($_COOKIE['GebruikersId']) != false) {
+        header("Location:index.php");
+    }
+}
+
 $usernameVal = $passwordVal = $matchingPassword = "";
 $errUser = $errPassword = "";
 
 $msgUser = "This user doesn't exist.";
 $msgPassword = "The password is incorrect.";
-
-include_once './validatiebibliotheek.php';
-include_once 'DAO/userDAO.php';
 
 if(isFormulierIngediend()){
     $usernameVal = getVeldWaarde("username");
@@ -15,6 +23,7 @@ if(isFormulierIngediend()){
     if($resultaat = UserDAO::getByUserName($usernameVal)){
     $matchingPassword = $resultaat->getPassword();
     if($matchingPassword === $passwordVal && !empty($passwordVal)){
+        setcookie('GebruikersId', $resultaat->getUserId(),time()+60*60*24);
         header("location:index.php");
     }else{
        $errPassword = $msgPassword;

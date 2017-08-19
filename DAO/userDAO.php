@@ -30,6 +30,28 @@ public static function getAll() {
         }
     }
     
+        public static function getById($id) {
+        $resultaat = self::getVerbinding()->voerSqlQueryUit("SELECT * FROM Users WHERE UserID='?'", array($id));
+        if ($resultaat->num_rows == 1) {
+            $databaseRij = $resultaat->fetch_array();
+            return self::converteerRijNaarObject($databaseRij);
+        } else {
+            //Er is waarschijnlijk iets mis gegaan
+            return false;
+        }
+    }
+    
+        public static function getByHighestId() {
+        $resultaat = self::getVerbinding()->voerSqlQueryUit("SELECT * FROM Users ORDER BY UserID DESC LIMIT 1");
+        if ($resultaat->num_rows == 1) {
+            $databaseRij = $resultaat->fetch_array();
+            return self::converteerRijNaarObject($databaseRij);
+        } else {
+            //Er is waarschijnlijk iets mis gegaan
+            return false;
+        }
+    }
+    
     protected static function converteerRijNaarObject($databaseRij) {
         return new User($databaseRij['UserID'], $databaseRij['FirstName'], $databaseRij['LastName'], $databaseRij['UserName'], $databaseRij['Password'], $databaseRij['Day'], $databaseRij['Month'], $databaseRij['Year'], $databaseRij['Gender']);
     }

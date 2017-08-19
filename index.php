@@ -1,6 +1,21 @@
 <?php
+if (isset($_COOKIE['GebruikersId'])){
+    include_once 'DAO/userDAO.php';
+    $cookie = $_COOKIE['GebruikersId'];
+    if(UserDAO::getById($cookie) != false){
+        $user = UserDAO::getById($cookie);
+        $username = $user->getUserName();
+        $firstname = $user->getFirstName();
+        $userId = $user->getUserId();
+        include_once 'DAO/postDAO.php';
+        date_default_timezone_set("Europe/Brussels");
+        } else {
+            header("location:login.php");
+        }
+} else {
+    header("location:login.php");
+}
 
-include_once 'DAO/postDAO.php';
 
 ?>
 <html lang="en">
@@ -16,23 +31,22 @@ include_once 'DAO/postDAO.php';
       <nav>
     <div class="container">
     <div id="logo_container">
- <img id="nav_logo" alt="Social Network Logo" src="s_logo.png"></div>
+ <img id="nav_logo" alt="Social Network Logo" src="img/s_logo.png"></div>
         
-        <div id="profile_button">
+<a href="logout.php"><div class="profile_button">
+        <h6>Log Out</h6></div></a> 
+        <a href="profile.php"><div class="profile_button">
             <h6>Welcome</h6>
-             <h5>Bavo</h5>
-        <div id="profile_pic"></div>
-        
-       
-        
-        </div>
+             <h5><?php echo $firstname ?></h5>
+            <div id="profile_pic"></div>
+        </div></a> 
         </div>
   </nav>
     <div id="nav_clear"></div>
     <div class="container">
     <div id="page_container">
     <form id="post" action="doPost.php" method="POST">
-        <textarea name="postcontent" placeholder="How was your day, Bavo?" rows="3" maxlength="200"></textarea>
+        <textarea name="postcontent" placeholder="How was your day, <?php echo $firstname ?>?" rows="3" maxlength="200"></textarea>
         <input type="submit" value="Submit">
     </form>
         <?php

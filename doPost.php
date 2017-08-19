@@ -1,11 +1,16 @@
 <?php
 
-include_once 'DAO/postDAO.php';
-include_once './validatiebibliotheek.php';
+if (isset($_COOKIE['GebruikersId'])) {
+    include_once 'DAO/postDAO.php';
+    include_once './validatiebibliotheek.php';
+    $userId = $_COOKIE['GebruikersId'];
 
-date_default_timezone_set("Europe/Brussels");
+    date_default_timezone_set("Europe/Brussels");
 
-$postwaarde = new Post(0, getVeldWaarde("postcontent"), date('Y-m-d H:i:s'), 1);
-PostDAO::insert($postwaarde);
+    $postwaarde = new Post(0, getVeldWaarde("postcontent"), date('Y-m-d H:i:s'), $userId);
+    PostDAO::insert($postwaarde);
 
-header("location:index.php");
+    header("location:index.php");
+
+
+}

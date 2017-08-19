@@ -39,15 +39,15 @@ img{
     margin: 0;
 }
 
-#profile_button{
+.profile_button{
     float: right;
     border: 1px solid #444444;
-    margin: 0.5em 0;
+    margin: 0.5em 0 0.5em 0.5em;
     padding: 0.2em;
     border-radius: 2px;
 }
 
-#profile_button:hover{
+.profile_button:hover{
     background-color: #444444;
 }
 
@@ -66,7 +66,7 @@ h5{
     color: white;
     margin: 0;
     float: left;
-    padding: 0.5em 0.75em 0.2em 0.1em;
+    padding: 0.2em 0.4em 0.2em 0.1em;
 }
 
 h7{
@@ -118,12 +118,8 @@ h2{
     font-weight: 300;
 }
 
-#post{
-    width: 100%;
-}
-
 #post textarea {
-    width: 96%;
+    width: 100%;
     border-radius: 2px;
     border: 1px solid #333333;
     resize: none; 
@@ -141,7 +137,7 @@ h2{
     color: white;
     padding: 0.5em 1em;
     border-radius: 2px;
-    margin: 5em 0;
+    margin: 1em 0;
 }
 
 .background{
@@ -155,7 +151,7 @@ h2{
 }
 
 #login_background{
-    background-image: url(login.jpg);
+    background-image: url(img/login.jpg);
 }
 
 #white_banner{

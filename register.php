@@ -22,9 +22,8 @@
         $errJaar = errVoegMeldingToe($errJaar, errVeldMoetGroterDanWaarde("year", 1850));
         
     if(isFormulierValid()){
-        //Verwijs hier naar de home pagina
-        echo "Het werkt.";
         slaWaardenOp();
+        header("location:index.php");
     }
     else {
       $uitgelezenFirstName = getVeldWaarde("firstname");
@@ -57,11 +56,12 @@
     function slaWaardenOp(){
         $newUser = new User(0, getVeldWaarde("firstname"), getVeldWaarde("lastname"), getVeldWaarde("username"), getVeldWaarde("password"), getVeldWaarde("day"), getVeldWaarde("month"), getVeldWaarde("year"), getVeldWaarde("gender"));
         UserDAO::insert($newUser);
-
-        header("location:index.php");
-
+        $user = UserDAO::getByHighestId();
+        $profilePicName = $user->getUserId();
+        $profilePic = $_FILES["profilepic"];
+        move_uploaded_file($profilePic["tmp_name"], "img/profilePics/" . $profilePicName . ".jpg");
+        setcookie('GebruikersId', $user->getUserId(), time() + 60 * 60 * 24);
     }
-
     
 ?>
 
@@ -118,7 +118,7 @@
   <input type="radio" name="gender" value="female"> Female<br>
   <input type="radio" name="gender" value="other"> Other<br>
   <label for="bestand">Profile picture:
-                <input type="file" name="bestand"/>
+                <input type="file" name="profilepic"/>
   </label><br>
   <input type="hidden" name="postcheck" value="true"/>
         <input type="submit" value="Submit">
