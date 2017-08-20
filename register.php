@@ -139,6 +139,7 @@
     <a href="login.php"><h7>I already have an account.</h7></a>
         </div>
         </div>
+        <img id="logo" src="img/shareclub.png">
         </div>
   <!-- <script src="js/scripts.js"></script> -->
 </body>

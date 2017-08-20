@@ -69,6 +69,7 @@ function isFormulierIngediend() {
     <a href="register.php"><h7>Create an account</h7></a>
     </div>
         </div>
+        <img id="logo" src="img/shareclub.png">
         </div>
   <!-- <script src="js/scripts.js"></script> -->
 </body>
