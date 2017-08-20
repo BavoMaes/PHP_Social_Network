@@ -68,8 +68,7 @@ if (isset($_COOKIE['GebruikersId'])){
             ?>
             </h3></div> 
         <div class="text">        
-                    <h4><a href="">
-            <?php
+                    <?php echo '<h4><a href="profile.php?ProfileId=' . $postUser->getUserId() . '">';
             echo $postUser->getUserName();
             ?>
                 </a></h4>

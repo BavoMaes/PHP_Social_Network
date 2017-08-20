@@ -296,3 +296,60 @@ a{
     text-decoration: none;
     color: #222222;
 }
+
+.profile{
+   width:  inherit;
+    border-radius: 2px;
+    border: 1px solid #222222; 
+    margin: 1em 0;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.profileinfo{
+    width: 10em;
+    float: left;
+    text-align: center;
+}
+
+.profileinfo img{
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    background-color: #eeeeee;
+    
+}
+
+.profiletext h4{
+    margin: 0 0 0.3em 0;
+    padding: 0;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+
+.profiletext h3{
+    margin: 0.5em 0 ;
+    padding: 0;
+    font-size: 1em;
+    font-weight: 300;
+    color: #222222;
+    text-align: left;
+}
+
+.profiletext p{
+    margin: 0;
+    font-weight: 300;
+    font-size: 0.75em;
+}
+
+.profiletext{
+    overflow: hidden;
+    margin: 0;
+    padding-left: 1em;
+}
+
+.text img{
+    width: 100%;
+    border-radius: 0;
+    margin: 2% 0 0 0;
+}

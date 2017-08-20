@@ -30,6 +30,18 @@ public static function getAll() {
         }
     }
     
+    public static function getByUserId($user) {
+        $resultaat = self::getVerbinding()->voerSqlQueryUit("SELECT * FROM Posts WHERE UserID='?' ORDER BY PostID DESC", array($user));
+        $resultatenArray = array();
+        for ($index = 0; $index < $resultaat->num_rows; $index++) {
+            $databaseRij = $resultaat->fetch_array();
+            $nieuw = self::converteerRijNaarObject($databaseRij);
+            $resultatenArray[$index] = $nieuw;
+        }
+        return $resultatenArray;
+    }
+
+    
     protected static function converteerRijNaarObject($databaseRij) {
         return new Post($databaseRij['PostID'], $databaseRij['PostContent'], $databaseRij['PostTime'], $databaseRij['UserID']);
     }
