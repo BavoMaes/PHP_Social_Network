@@ -2,7 +2,7 @@
 
 <?php
     
-    $uitgelezenFirstName = $uitgelezenLastName = $uitgelezenUserName = $uitgelezenPassword = $uitgelezenPassword2 = $uitgelezenDag = $uitgelezenMaand = $uitgelezenJaar = "";
+    $uitgelezenFirstName = $uitgelezenLastName = $uitgelezenUserName = $uitgelezenPassword = $uitgelezenPassword2 = $uitgelezenDag = $uitgelezenMaand = $uitgelezenJaar = $uitgelezenBio = "";
     $uitgelezenPicture;
     $errFirstName = $errLastName = $errUserName = $errPassword = $errPassword2 = $errDag = $errMaand = $errJaar = $errPicture = "";
     

@@ -1,9 +1,8 @@
 <?php
 
-
 include_once './validatiebibliotheek.php';
 include_once 'DAO/userDAO.php';
-
+//Check if cookie exists. If it exists, the user doesn't have to login.
 if (isset($_COOKIE["GebruikersId"])){
     
     if (UserDAO::getById($_COOKIE['GebruikersId']) != false) {
@@ -20,8 +19,10 @@ $msgPassword = "The password is incorrect.";
 if(isFormulierIngediend()){
     $usernameVal = getVeldWaarde("username");
     $passwordVal = getVeldWaarde("password");
+    //Check if the user exists. If so, fetch his password.
     if($resultaat = UserDAO::getByUserName($usernameVal)){
     $matchingPassword = $resultaat->getPassword();
+    //Check if the password is correct and not empty. If so, set a new cookie.
     if($matchingPassword === $passwordVal && !empty($passwordVal)){
         setcookie('GebruikersId', $resultaat->getUserId(),time()+60*60*24);
         header("location:index.php");

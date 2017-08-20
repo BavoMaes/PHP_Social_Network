@@ -1,6 +1,7 @@
 <?php
 
-$profileGet = $_GET['ProfileId'];
+//Check if the cookie exists. If so, check if the cookie is correct.
+
 $cookie = $_COOKIE['GebruikersId'];
 
 if (isset($cookie)) {
@@ -14,10 +15,10 @@ if (isset($cookie)) {
         header("location:login.php");
     }
     
+    //Check if the ProfileId is given. If not, show the current user's profile.
     
-    
-    if (isset($profileGet)) {
-
+    if (isset($_GET['ProfileId'])) {
+        $profileGet = $_GET['ProfileId'];
         if (UserDAO::getById($profileGet) != false) { 
             $profile = UserDAO::getById($profileGet);
             
@@ -32,6 +33,7 @@ if (isset($cookie)) {
     header("location:login.php");
 }
 
+//Save the profile values locally.
 $username = $profile->getUserName();
 $firstname = $profile->getFirstName();
 $lastname = $profile->getLastName();
@@ -83,6 +85,7 @@ $year = $profile->getYear();
          <div style="clear:both"></div>
         
         <?php
+        //Only show the posts of the user wich profile where on.
     foreach (PostDAO::getByUserId($userId) as $post) { 
         $postUserId = $post->getUserId();
         $postUser = UserDAO::getById($postUserId);

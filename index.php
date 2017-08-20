@@ -1,4 +1,5 @@
 <?php
+//Check if the cookie exists. If so, get the users information.
 if (isset($_COOKIE['GebruikersId'])){
     include_once 'DAO/userDAO.php';
     $cookie = $_COOKIE['GebruikersId'];
@@ -53,6 +54,7 @@ if (isset($_COOKIE['GebruikersId'])){
         <div style="clear: both;"></div>
     </form>
         <?php
+        //Get each post and load it in one by one.
     foreach (PostDAO::getAll() as $post) { 
         
         $postUserId = $post->getUserId();

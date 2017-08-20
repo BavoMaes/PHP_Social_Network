@@ -54,7 +54,7 @@ img{
 h3{
     color: gray;
    font-weight: 100;
-    font-size: 0.1em;
+    font-size: 0.75em;
     text-align: center;
     padding: 0;
     margin: 0.5em 0 0 0;
@@ -244,11 +244,11 @@ label{
 }
 
 #register_form input[type=radio]{
-    margin: 0 1em 1.5em 0;
+    margin: 0 1em 0 0;
 }
 
 #register_form input[type=submit]{
-    margin: 2em 0 0 0;
+    margin: 1em 0 0 0;
 }
 
 .post{
@@ -271,6 +271,7 @@ label{
     height: 4em;
     border-radius: 50%;
     background-color: #eeeeee;
+    object-fit: cover;
     
 }
 
@@ -290,6 +291,8 @@ label{
     width: 100%;
     border-radius: 0;
     margin: 2% 0 0 0;
+    max-height: 30em;
+    object-fit: cover;
 }
 
 a{
@@ -317,6 +320,7 @@ a{
     height: 8em;
     border-radius: 50%;
     background-color: #eeeeee;
+    object-fit: cover;
     
 }
 
